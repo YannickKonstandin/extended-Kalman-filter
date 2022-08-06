@@ -1,0 +1,27 @@
+<?xml version= "1.0" ?>
+<launch>
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [waffle]"/>
+  <arg name="x_pos" default="0.0"/>
+  <arg name="y_pos" default="0.0"/>
+  <arg name="z_pos" default="0.0"/>
+  
+  <param name="path_file" value="($find konstandin)/map/my_map.txt"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find konstandin)/world/myworld.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+
+<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch"/>
+
+<!-- Run rviz -->
+	<node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find konstandin)/rviz/turtlebot3.rviz"/>
+	
+<node name="move_robot" pkg="konstandin" type="move_robot" output="screen"/>
+<node name="EKF" pkg="konstandin" type="EKF" output="screen"/>
+</launch>
