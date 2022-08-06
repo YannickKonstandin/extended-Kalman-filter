@@ -1,5 +1,4 @@
-// Author:  Yannick Konstandin
-// Nr:      mr20m012
+
 
 #include <ros/ros.h>
 #include <iostream>
