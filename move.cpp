@@ -1,6 +1,3 @@
-// Author:  Yannick Konstandin
-// Nr:      mr20m012
-
 #include <ros/ros.h>
 #include <geometry_msgs/Vector3.h>
 #include <geometry_msgs/Twist.h>
